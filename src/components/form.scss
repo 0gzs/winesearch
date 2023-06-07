@@ -1,0 +1,72 @@
+.form-container {
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.nameStrict {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nameStrict span {
+  text-decoration: underline;
+}
+
+.nameStrict span:hover {
+  cursor: pointer;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25em;
+  height: 5.6rem;
+  margin: 0.8em 0; 
+}
+
+input[type="text"] {
+    padding: 1em;
+    width: 100%;
+    border: none;
+    font-size: 1.6rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.toggled {
+  justify-content: flex-end;
+}
+
+.toggle,
+.toggled {
+  width: 5rem;
+  display: flex;
+  padding: 0.25em;
+  border-radius: 5px;
+  margin-right: 1em;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.toggle > button {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 45%;
+}
+
+.toggled > button { 
+  background-color: rgba(255, 255, 255, 1);
+  width: 45%;
+}
+
+.on {
+  justify-items: flex-end;
+}

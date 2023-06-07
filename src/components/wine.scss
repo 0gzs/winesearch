@@ -1,0 +1,96 @@
+.product-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+  align-items: center;
+  padding: 1rem 2.25rem;
+  width: 100%;
+  margin: 0 auto;
+  height: fit-content;
+  max-width: 380px;
+  position: relative;
+}
+
+.product-container > button {
+  width: fit-content;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  background-color: #202f3399;
+  color: white;
+
+  &:hover, &:active {
+    background-color: #202f33;
+  }
+}
+
+.barcode {
+  width: 10rem;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  
+  img {
+    max-width: 100%;
+  }
+}
+
+
+.product-img {
+  width: 150px;
+  min-width: 100px;
+  height: fit-content;
+  margin: 0.5em 0;
+
+  img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+}
+
+h3 {
+    font-size: 1.8rem;
+    height: 40px;
+    line-height: 1;
+  }
+
+.product-details {
+  min-width: 250px;
+  flex: 1;
+  font-weight: 200;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 0;
+  gap: 0.5em;
+  color: #000;
+  
+  .product-description {
+    overflow: hidden;
+    font-size: 1.2rem;
+    /* display: -webkit-box;
+    display: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;*/ 
+    /* start showing ellipsis when 3rd line is reached */
+    /*white-space: pre-wrap;*/
+
+    button {
+      background-color: #000;
+    }
+  }
+}
+
+.product-tags {
+  p {
+    span {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  background: #202f33;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: #A1BDC4;
+}
+
+header {
+  width: 100vw;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 3em 2.6em;
+  display: flex;
+  align-items: center;
+  height: 7.2rem;
+
+  h3 {
+    font-size: 2rem;
+    height: fit-content;
+    color: #fff;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
+  max-width: 1440px;
+  height: calc(100vh - 10rem);
+  overflow: hidden;
+}
+
+@media (min-width: 780px) {
+  header {
+    padding: 3em 5em
+  }
+  
+  body { 
+    overflow: hidden;
+  }
+
+  .wrapper {
+    flex-direction: row;
+    padding: 3em 5em;
+  }
+
+  .resultsgrid {
+    overflow-y: scroll;
+    height: calc(100vh - 7.2rem);
+  }
+}
+
+.results-wrapper {
+  flex: 1;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  grid-column-gap: 0.5em;
+  grid-gap: 0.75em;
+  justify-content: center;
+  padding: 0.75em;
+  padding-top: 0;
+}
+
+.button {
+  padding: 0.8em;
+  border: none;
+  font-size: 1.6rem;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fcb103;
+  color: #000;
+  font-weight: 600;
+
+  i {
+    font-size: 1em;
+    color: inherit;
+    padding-right: 0.5em;
+  }
+
+  &:hover {
+    cursor: pointer;
+    i { color: #58181f; }
+  }
+}
+
+svg {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  display:inline-block;
+}
+
+.sub-heading {
+  font-size: 1.6rem; 
+  color: #fff;
+  margin: 0.5em 0;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 400px;
+}
+
+.search-buttons-wrapper {
+  display: flex;
+  gap: 1em;
+  height: fit-content;
+  margin: 0 auto;
+}
+
