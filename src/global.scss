@@ -35,7 +35,7 @@ header {
   max-width: 1440px;
   margin: 0 auto;
   background-color: transparent;
-  padding: 3em 2.6em;
+  padding: 3em 1em;
   display: flex;
   align-items: center;
   height: 7.2rem;
@@ -136,5 +136,6 @@ svg {
   gap: 1em;
   height: fit-content;
   margin: 0 auto;
+  width: 100%;
 }
 
