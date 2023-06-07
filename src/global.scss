@@ -50,6 +50,7 @@ header {
 .wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 2em;
   padding: 1em;
@@ -65,11 +66,6 @@ header {
   
   body { 
     overflow: hidden;
-  }
-
-  .wrapper {
-    flex-direction: row;
-    padding: 3em 5em;
   }
 
   .resultsgrid {
@@ -133,7 +129,6 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  width: 400px;
 }
 
 .search-buttons-wrapper {
