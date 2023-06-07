@@ -30,11 +30,9 @@ function App() {
         <Form setResults={setResults} />
 
         {results.length > 0 && (
-          <div className="results-wrapper">
             <div ref={containerRef} className="resultsGrid">
               {results.map((w, i) => w && <Wine key={i} wine={w} />)}
             </div>
-          </div>
         )}
       </div>
     </>

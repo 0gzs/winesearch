@@ -32,7 +32,6 @@ h1 {
 
 header {
   width: 100vw;
-  max-width: 1440px;
   margin: 0 auto;
   background-color: transparent;
   padding: 3em 1em;
@@ -51,21 +50,15 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 2em;
   padding: 1em;
   max-width: 1440px;
-  height: calc(100vh - 10rem);
-  overflow: hidden;
+  margin-top: 15em;
 }
 
 @media (min-width: 780px) {
   header {
     padding: 3em 5em
-  }
-  
-  body { 
-    overflow: hidden;
   }
 
   .resultsgrid {
@@ -74,15 +67,28 @@ header {
   }
 }
 
-.results-wrapper {
-  flex: 1;
-  height: 100%;
-  overflow-y: scroll;
+@media (min-width: 1250px) {
+  .wrapper {
+    padding: 0 5em;
+  }
+
+  .wrapper {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+ .resultsGrid {
+    margin-top: -10em;
+    height: calc(100vh - 13em);
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 86rem;
+  }
 }
 
 .resultsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  grid-template-columns: repeat(auto-fill, 32rem);
   grid-column-gap: 0.5em;
   grid-gap: 0.75em;
   justify-content: center;

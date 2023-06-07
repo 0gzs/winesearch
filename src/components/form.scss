@@ -5,6 +5,7 @@
   max-width: 42rem;
   width: 100%;
   margin: 0 auto 10rem;
+  min-height: 33.5rem;
 }
 
 .nameStrict {
@@ -68,4 +69,10 @@ input[type="text"]:focus {
 
 .on {
   justify-items: flex-end;
+}
+
+@media (min-height: 1020px) {
+  .form-container {
+    margin: initial;
+  }
 }

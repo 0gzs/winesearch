@@ -26,7 +26,7 @@ const Dropdown = ({ onChange, title, icon, name }) => {
   useEffect(() => {
     // on resize if screen size is less than 400 set hide to true
     const handleResize = () => {
-      if (window.innerWidth < 450) setHide(true)
+      if (window.innerWidth < 500) setHide(true)
       else setHide(false)
     }
 
@@ -40,17 +40,19 @@ const Dropdown = ({ onChange, title, icon, name }) => {
   return (
     <div className="dropdown" onClick={toggle}>
       <i className={icon + " icon-left"}></i>
-      <button className='button' type="button">
-        {hide ? '' : selected ? selected : title}
-      </button>
+      {!hide && (
+        <button className='button' type="button">
+          {selected || title}
+        </button>
+      )}
       {opened && !selected ? (
-            <i className="fa-solid fa-chevron-up icon-right"></i>
-          ) : !selected ? (
-            <i className='fa-solid fa-chevron-down icon-right'></i>
-          ) : (
-            <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
-          )
-        }
+        <i className="fa-solid fa-chevron-up icon-right"></i>
+      ) : !selected ? (
+        <i className='fa-solid fa-chevron-down icon-right'></i>
+      ) : (
+        <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
+      )
+      }
       {opened && (
         <div className="items-container" onMouseLeave={() => {
           if (opened) setOpened(false)
