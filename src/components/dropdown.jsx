@@ -7,7 +7,7 @@ const Dropdown = ({ onChange, title, icon, name }) => {
 
   const [opened, setOpened] = useState(false)
   const [selected, setSelected] = useState(null)
-  const [hide, setHide] = useState(false)
+  const [hide, setHide] = useState(() => window.innerWidth < 500)
 
   const toggle = () => setOpened(!opened)
 
