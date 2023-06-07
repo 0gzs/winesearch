@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/winesearch/static/css/main.57b275c1.css",
+    "main.js": "/winesearch/static/js/main.aeaf2a7a.js",
+    "index.html": "/winesearch/index.html",
+    "main.57b275c1.css.map": "/winesearch/static/css/main.57b275c1.css.map",
+    "main.aeaf2a7a.js.map": "/winesearch/static/js/main.aeaf2a7a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57b275c1.css",
+    "static/js/main.aeaf2a7a.js"
+  ]
+}
