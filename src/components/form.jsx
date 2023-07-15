@@ -38,23 +38,23 @@ const Form = ({ setResults }) => {
       let storage = localStorage.getItem('results')
       let results = JSON.parse(storage)
 
-      if (wineName.length > 0) {
+      if (searchByName && wineName.length > 0) {
         results = results.filter(wine => wine.name.toLowerCase().includes(wineName.toLowerCase()))
       }
 
-      if (wineDescription.length > 0) {
+      if (!searchByName && wineDescription.length > 0) {
         results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
       }
 
-      if (wineType.length > 0) {
+      if (!searchByName && wineType.length > 0) {
         results = results.filter(wine => wine.type.toLowerCase().includes(wineType.toLowerCase()))
       }
 
-      if (wineRegion.length > 0) {
+      if (!searchByName && wineRegion.length > 0) {
         results = results.filter(wine => wine.region.toLowerCase().includes(wineRegion.toLowerCase()))
       }
 
-      if (wineRating.length > 0) {
+      if (!searchByName && wineRating.length > 0) {
         results = results.filter(wine => wine.rating.toLowerCase().includes(wineRating.toLowerCase()))
       }
 
@@ -76,7 +76,7 @@ const Form = ({ setResults }) => {
       wineRegion.length === 0 &&
       wineRating.length === 0
     ) setResults([])
-  }, [wineName, wineDescription, wineType, wineRegion, wineRating, setResults])
+  }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName, setResults])
 
   return (
     <div className="form-container">
