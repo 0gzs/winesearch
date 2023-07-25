@@ -4,17 +4,25 @@ import './dropdown.scss'
 import regions from '../data/regions.json'
 import varietals from '../data/varietals.json'
 
-const Dropdown = ({ onChange, title, icon }) => {
+const Dropdown = ({ handler, onChange, title, icon }) => {
   const options = title.toLowerCase() === 'region' ? regions : title.toLowerCase() === 'varietal' ? varietals : [1, 2, 3, 4, 5]
 
-  const [opened, setOpened] = useState(false)
   const [selected, setSelected] = useState(null)
   const [hide, setHide] = useState(() => window.innerWidth < 500)
 
-  const toggle = () => setOpened(!opened)
+  const toggle = () => {
+    if (handler.opened && handler.dropdownName === title) {
+      handler.setOpened(false)
+      handler.setDropdownName('')
+    } else {
+      handler.setOpened(true)
+      handler.setDropdownName(title)
+    }
+  }
 
   const reset = () => {
-    setOpened(false)
+    handler.setOpened(false)
+    handler.setDropdownName('')
     setSelected(null)
     onChange(title, '')
   }
@@ -22,6 +30,7 @@ const Dropdown = ({ onChange, title, icon }) => {
   const handleChange = option => {
     onChange(title, option)
     toggle()
+    handler.setDropdownName(title)
     setSelected(option)
   }
 
@@ -47,7 +56,7 @@ const Dropdown = ({ onChange, title, icon }) => {
           {selected || title}
         </button>
       )}
-      {opened && !selected ? (
+      {handler.opened && handler.dropdownName === title && !selected ? (
         <i className="fa-solid fa-chevron-up icon-right"></i>
       ) : !selected ? (
         <i className='fa-solid fa-chevron-down icon-right'></i>
@@ -55,9 +64,9 @@ const Dropdown = ({ onChange, title, icon }) => {
         <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
       )
       }
-      {opened && (
+      {handler.opened && handler.dropdownName === title && (
         <div className="items-container" onMouseLeave={() => {
-          if (opened) setOpened(false)
+          if (handler.opened) handler.setOpened(false)
         }}>
           <div>
             {options.map((value, i) => {

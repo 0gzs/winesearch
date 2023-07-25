@@ -15,6 +15,9 @@ const Form = ({ setResults, setKeywords }) => {
   const [wineRegion, setWineRegion] = useState('')
   const [wineRating, setWineRating] = useState('')
 
+  const [dropdownName, setDropdownName] = useState('')
+  const [opened, setOpened] = useState(false)
+
   const changeHandler = (name, value) => {
     name = name.toLowerCase()
     switch (name) {
@@ -40,7 +43,7 @@ const Form = ({ setResults, setKeywords }) => {
       let results = wine
 
       if (searchByName && wineName.length > 0) {
-        setKeywords([ wineName ])
+        setKeywords([wineName])
         results = results.filter(wine => wine.name.toLowerCase().includes(wineName.toLowerCase()))
       }
 
@@ -49,13 +52,13 @@ const Form = ({ setResults, setKeywords }) => {
           let keywords = wineDescription.split(',').map(word => word.trim())
           keywords = keywords.filter(word => word !== ' ' && word !== '').map(word => word.trim())
 
-          setKeywords([ ...keywords ])
+          setKeywords([...keywords])
 
           results = results.filter(wine => keywords.some(keyword => wine.description.toLowerCase().includes(keyword.toLowerCase())))
         } else {
-          let keyword = [ wineDescription.trim() ]
+          let keyword = [wineDescription.trim()]
 
-          setKeywords([ ...keyword ])
+          setKeywords([...keyword])
 
           results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
         }
@@ -75,7 +78,7 @@ const Form = ({ setResults, setKeywords }) => {
 
       setResults(results)
     }
-    
+
     if (
       wineName.length > 0 ||
       wineDescription.length > 0 ||
@@ -96,6 +99,16 @@ const Form = ({ setResults, setKeywords }) => {
     }
   }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName, setResults, setKeywords])
 
+  useEffect(() => {
+    const closeDropdowns = e => {
+      if (opened) {
+        setOpened(false)
+      }
+    }
+    
+    document.querySelector('.wrapper').addEventListener('mousedown', closeDropdowns)
+  }, [opened])
+
   return (
     <div className="form-container">
       <h1>Let's find your next favorite wine!</h1>
@@ -104,6 +117,7 @@ const Form = ({ setResults, setKeywords }) => {
       <div className="search-buttons-wrapper">
         <div className={"formGroup"}>
           <Dropdown
+            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Varietal'}
             icon={"fa-solid fa-wine-bottle"} />
@@ -111,6 +125,7 @@ const Form = ({ setResults, setKeywords }) => {
 
         {!searchByName && <div className={"formGroup"}>
           <Dropdown
+            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Region'}
             icon={"fa-regular fa-map"} />
@@ -118,6 +133,7 @@ const Form = ({ setResults, setKeywords }) => {
 
         <div className={"formGroup"}>
           <Dropdown
+            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Rating'}
             icon={"fa-solid fa-star-half-stroke"} />
