@@ -25,7 +25,7 @@ function App() {
         <h3>wineglass</h3>
       </header>
 
-      <div className="wrapper">
+      <div className={`wrapper ${results.length > 0 && 'wrapper-with-results'}`}>
         <Form setResults={setResults} />
 
         {results.length > 0 && (
