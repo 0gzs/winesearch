@@ -11,7 +11,14 @@ const Wine = ({ wine, keywords }) => {
       <div className='product-img'>
         <img src={wine.image} alt={wine.name} />
       </div>
-      <h3>{wine.name}</h3>
+      <h3>
+        <Highlighter
+            highlightClassName='highlight'
+            searchWords={keywords}
+            autoEscape={true}
+            textToHighlight={wine.name}
+          />
+      </h3>
       <div className='product-details'>
         <p className='product-description'>
           <Highlighter
@@ -25,7 +32,7 @@ const Wine = ({ wine, keywords }) => {
           <p><span>Price: </span>{wine.price}</p>
           <p><span>Base Price: </span>{wine.base_price}</p>
           <p><span>Type: </span>{wine.type}</p>
-          <p><span>Rating: </span>{wine.rating}</p>
+          <p><span>Rating: </span>{wine.rating} </p>
           <p><span>On Hand: </span>{wine.on_hand}</p>
           <p><span>SKU: </span>{wine.sku}</p>
         </div>

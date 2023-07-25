@@ -61,20 +61,26 @@ header {
   gap: .6em;
   padding: 0.75em;
   padding-top: 0;
-  margin-top: -10em;
   margin-bottom: 5em;
+  width: 100%;
 }
 
 .highlight {
   background-color: #fcb103;
 }
 
-@media (min-width: 680px) {
+@media (max-width: 679px) and (min-height: 625px) {
+  .resultsGrid {
+    margin-top: -10rem;
+  }
+}
+
+@media (min-width: 680px) and (min-height: 780px) {
   .resultsGrid {
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
     flex-direction: row;
+    margin-top: -20rem;
   }
 
   .product-container {

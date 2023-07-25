@@ -23,7 +23,7 @@ const SearchByName = ({ text, onChange, viewSearch }) => {
           OR
         </p>
         <button id="toggleName" className='button' onClick={() => viewSearch(false)}>
-          go back
+          search by description
         </button>
       </div>
     </div>

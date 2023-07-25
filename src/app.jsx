@@ -13,19 +13,6 @@ function App() {
     if (container) container.scrollTop = 0
   }, [results])
 
-  useEffect(() => {
-    if (results.length > 0) {
-      const form = document.querySelector('.form-container')
-      form.classList.add('form-container--results')
-    }
-  }, [results])
-
-  useEffect(() => {
-    if (keywords.length > 0) {
-      console.log(keywords)
-    }
-  }, [keywords])
-
   return (
     <>
       <header>

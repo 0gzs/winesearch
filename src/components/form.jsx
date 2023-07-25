@@ -40,6 +40,7 @@ const Form = ({ setResults, setKeywords }) => {
       let results = wine
 
       if (searchByName && wineName.length > 0) {
+        setKeywords([ wineName ])
         results = results.filter(wine => wine.name.toLowerCase().includes(wineName.toLowerCase()))
       }
 
