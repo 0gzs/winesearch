@@ -50,8 +50,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8em 2em 0;
+  padding: 0 1em 0;
   width: 100%;
+  margin-top: 24rem;
 }
 
 .resultsGrid {
@@ -61,26 +62,20 @@ header {
   gap: .6em;
   padding: 0.75em;
   padding-top: 0;
+  margin-bottom: 5em;
 }
 
 @media (min-width: 680px) {
-  
   .resultsGrid {
     flex-direction: row;
     flex-wrap: wrap;
-  }
-
-  .wrapper {
-   padding-top: 15em;
-    min-height: calc(100vh - 8.4rem);
-  }
-
-  .resultsGrid {
     width: 100%;
     flex-direction: row;
-    margin-bottom: 2.5em;
   }
 
+  .product-container {
+    max-width: 32rem !important;
+  }
 }
 
 @media (min-width: 780px) {
@@ -100,18 +95,27 @@ header {
     align-items: center;
     padding-left: 5em;
     gap: 0;
+    height: calc(100vh - 8.4rem);
+    overflow: hidden;
   }
 
  .resultsGrid {
-    height: calc(100vh - 13em);
-    overflow: hidden;
     width: 86rem;
+    height: 100%;
+    margin-top: 10rem;
+    margin-bottom: 0;
+    padding-bottom: 10rem;
+    overflow-y: scroll;
+  }
+
+  .form-container {
+    margin-bottom: 0;
   }
 }
 
-@media (min-height: 1080px) {
-  .wrapper {
-    height: calc(100vh - 8.4rem);
+@media (min-width: 1440px) {
+  .product-container {
+    max-width: 38rem !important;
   }
 }
 

@@ -12,6 +12,13 @@ function App() {
     if (container) container.scrollTop = 0
   }, [results])
 
+  useEffect(() => {
+    if (results.length > 0) {
+      const form = document.querySelector('.form-container')
+      form.classList.add('form-container--results')
+    }
+  })
+
   return (
     <>
       <header>
@@ -19,7 +26,7 @@ function App() {
       </header>
 
       <div className="wrapper">
-        <Form setResults={setResults} containerRef={containerRef} />
+        <Form setResults={setResults} />
 
         {results.length > 0 && (
             <div ref={containerRef} className="resultsGrid">
