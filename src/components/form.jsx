@@ -16,8 +16,9 @@ const Form = ({ setResults }) => {
   const [wineRating, setWineRating] = useState('')
 
   const changeHandler = (name, value) => {
+    name = name.toLowerCase()
     switch (name) {
-      case 'types':
+      case 'varietal':
         setWineType(value)
         break
       case 'region':
@@ -93,7 +94,6 @@ const Form = ({ setResults }) => {
           <Dropdown
             onChange={changeHandler}
             title={'Varietal'}
-            name="types"
             icon={"fa-solid fa-wine-bottle"} />
         </div>
 
@@ -101,7 +101,6 @@ const Form = ({ setResults }) => {
           <Dropdown
             onChange={changeHandler}
             title={'Region'}
-            name="region"
             icon={"fa-regular fa-map"} />
         </div>}
 
@@ -109,8 +108,7 @@ const Form = ({ setResults }) => {
           <Dropdown
             onChange={changeHandler}
             title={'Rating'}
-            icon={"fa-solid fa-star-half-stroke"}
-            name="rating" />
+            icon={"fa-solid fa-star-half-stroke"} />
         </div>
       </div>
 

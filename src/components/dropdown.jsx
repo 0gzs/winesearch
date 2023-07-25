@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './dropdown.scss'
-import fieldData from '../data/fieldData.js'
 
-const Dropdown = ({ onChange, title, icon, name }) => {
-  const options = fieldData[name]
+import regions from '../data/regions.json'
+import varietals from '../data/varietals.json'
+
+const Dropdown = ({ onChange, title, icon }) => {
+  const options = title.toLowerCase() === 'region' ? regions : title.toLowerCase() === 'varietal' ? varietals : [1, 2, 3, 4, 5]
 
   const [opened, setOpened] = useState(false)
   const [selected, setSelected] = useState(null)
@@ -14,11 +16,11 @@ const Dropdown = ({ onChange, title, icon, name }) => {
   const reset = () => {
     setOpened(false)
     setSelected(null)
-    onChange(name, '')
+    onChange(title, '')
   }
 
   const handleChange = option => {
-    onChange(name, option)
+    onChange(title, option)
     toggle()
     setSelected(option)
   }
@@ -62,7 +64,7 @@ const Dropdown = ({ onChange, title, icon, name }) => {
               return (
                 <p
                   key={i}
-                  onClick={() => handleChange(value, name)}>
+                  onClick={() => handleChange(value)}>
                   {value}
                 </p>
               )

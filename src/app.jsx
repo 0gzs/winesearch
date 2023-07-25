@@ -19,7 +19,7 @@ function App() {
       </header>
 
       <div className="wrapper">
-        <Form setResults={setResults} />
+        <Form setResults={setResults} containerRef={containerRef} />
 
         {results.length > 0 && (
             <div ref={containerRef} className="resultsGrid">
