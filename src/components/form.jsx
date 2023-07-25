@@ -7,7 +7,7 @@ import SearchByDescription from './search-by-desc'
 import './form.scss'
 import Dropdown from './dropdown'
 
-const Form = ({ setResults }) => {
+const Form = ({ setResults, setKeywords }) => {
   const [searchByName, setSearchByName] = useState(false)
   const [wineName, setWineName] = useState('')
   const [wineDescription, setWineDescription] = useState('')
@@ -45,11 +45,19 @@ const Form = ({ setResults }) => {
 
       if (!searchByName && wineDescription.length > 0) {
         if (wineDescription.includes(',')) {
-          const description = wineDescription.split(',')
-          description.forEach(desc => {
-            results = results.filter(wine => wine.description.toLowerCase().includes(desc.toLowerCase()))
-          })
-        } else results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
+          let keywords = wineDescription.split(',').map(word => word.trim())
+          keywords = keywords.filter(word => word !== ' ' && word !== '').map(word => word.trim())
+
+          setKeywords([ ...keywords ])
+
+          results = results.filter(wine => keywords.some(keyword => wine.description.toLowerCase().includes(keyword.toLowerCase())))
+        } else {
+          let keyword = [ wineDescription.trim() ]
+
+          setKeywords([ ...keyword ])
+
+          results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
+        }
       }
 
       if (!searchByName && wineType.length > 0) {
@@ -81,8 +89,11 @@ const Form = ({ setResults }) => {
       wineType.length === 0 &&
       wineRegion.length === 0 &&
       wineRating.length === 0
-    ) setResults([])
-  }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName, setResults])
+    ) {
+      setResults([])
+      setKeywords([])
+    }
+  }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName, setResults, setKeywords])
 
   return (
     <div className="form-container">

@@ -54,10 +54,6 @@ header {
   width: 100%;
 }
 
-.wrapper-with-results {
-  margin-top: 27.5rem;
-}
-
 .resultsGrid {
   display: flex; 
   flex-direction: column;
@@ -65,8 +61,12 @@ header {
   gap: .6em;
   padding: 0.75em;
   padding-top: 0;
-  margin-top: -15em;
+  margin-top: -10em;
   margin-bottom: 5em;
+}
+
+.highlight {
+  background-color: #fcb103;
 }
 
 @media (min-width: 680px) {

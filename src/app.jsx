@@ -5,6 +5,7 @@ import Form from './components/form'
 
 function App() {
   const [results, setResults] = useState([])
+  const [keywords, setKeywords] = useState([])
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -19,6 +20,12 @@ function App() {
     }
   }, [results])
 
+  useEffect(() => {
+    if (keywords.length > 0) {
+      console.log(keywords)
+    }
+  }, [keywords])
+
   return (
     <>
       <header>
@@ -26,11 +33,11 @@ function App() {
       </header>
 
       <div className="wrapper">
-        <Form setResults={setResults} />
+        <Form setResults={setResults} setKeywords={setKeywords} />
 
         {results.length > 0 && (
             <div ref={containerRef} className="resultsGrid">
-              {results.map((w, i) => w && <Wine key={i} wine={w} />)}
+              {results.map((w, i) => w && <Wine key={i} wine={w} keywords={keywords} />)}
             </div>
         )}
       </div>

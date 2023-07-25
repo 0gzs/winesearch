@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import Highlighter from 'react-highlight-words'
+
 import './wine.scss'
 
-const Wine = ({ wine }) => {
+const Wine = ({ wine, keywords }) => {
   const [barcode, setBarcode] = useState(false)
+
   return (
     <div className='product-container'>
       <div className='product-img'>
@@ -10,7 +13,14 @@ const Wine = ({ wine }) => {
       </div>
       <h3>{wine.name}</h3>
       <div className='product-details'>
-        <p className='product-description'>{wine.description}</p>
+        <p className='product-description'>
+          <Highlighter
+            highlightClassName='highlight'
+            searchWords={keywords}
+            autoEscape={true}
+            textToHighlight={wine.description}
+          />
+        </p>
         <div className='product-tags'>
           <p><span>Price: </span>{wine.price}</p>
           <p><span>Base Price: </span>{wine.base_price}</p>
