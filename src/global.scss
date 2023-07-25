@@ -61,6 +61,7 @@ header {
   gap: .6em;
   padding: 0.75em;
   padding-top: 0;
+  margin-top: 2rem;
   margin-bottom: 5em;
   width: 100%;
 }
@@ -69,18 +70,29 @@ header {
   background-color: #fcb103;
 }
 
-@media (max-width: 679px) and (min-height: 625px) {
+@media (min-height: 660px) {
   .resultsGrid {
     margin-top: -10rem;
   }
 }
 
-@media (min-width: 680px) and (min-height: 780px) {
+@media (min-height: 860px) {
+  .resultsGrid {
+    margin-top: -15rem;
+  }
+}
+
+@media (min-height: 980px) {
+  .resultsGrid {
+    margin-top: -20rem;
+  }
+}
+
+@media (min-width: 680px) {
   .resultsGrid {
     flex-direction: row;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-top: -20rem;
   }
 
   .product-container {
@@ -94,12 +106,12 @@ header {
   }
 }
 
-@media (min-width: 1250px) {
+@media (min-width: 1320px) {
   .wrapper {
     flex-direction: row;
     margin: initial;
     align-items: center;
-    padding-left: 5em;
+    justify-content: center;
     gap: 0;
     overflow: hidden;
     max-height: calc(100vh - 8.4rem)
@@ -108,19 +120,17 @@ header {
  .resultsGrid {
     width: 86rem;
     height: 100%;
-    margin-top: 10rem;
     margin-bottom: 0;
     padding-bottom: 10rem;
     overflow-y: scroll;
-    max-height: calc(100vh - 8.4rem)
+    max-height: calc(100vh - 8.4rem);
+    margin-top: 5rem;
   }
 
   .form-container {
     margin-bottom: 0;
   }
-}
 
-@media (min-width: 1440px) {
   .product-container {
     max-width: 38rem !important;
   }

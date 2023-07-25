@@ -98,8 +98,8 @@ const Form = ({ setResults, setKeywords }) => {
 
   return (
     <div className="form-container">
-      <h1>Let's find your next wine!</h1>
-      <p className='sub-heading'>Provide us with a few details that might assist us in our search</p>
+      <h1>Let's find your next favorite wine!</h1>
+      <p className='sub-heading'>Provide a few details to assist in the search.</p>
 
       <div className="search-buttons-wrapper">
         <div className={"formGroup"}>
