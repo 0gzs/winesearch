@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import wine from '../data/wine.json'
 
 import SeachByName from './search-by-name'
 import SearchByDescription from './search-by-desc'
@@ -35,15 +36,19 @@ const Form = ({ setResults }) => {
 
   useEffect(() => {
     const search = () => {
-      let storage = localStorage.getItem('results')
-      let results = JSON.parse(storage)
+      let results = wine
 
       if (searchByName && wineName.length > 0) {
         results = results.filter(wine => wine.name.toLowerCase().includes(wineName.toLowerCase()))
       }
 
       if (!searchByName && wineDescription.length > 0) {
-        results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
+        if (wineDescription.includes(',')) {
+          const description = wineDescription.split(',')
+          description.forEach(desc => {
+            results = results.filter(wine => wine.description.toLowerCase().includes(desc.toLowerCase()))
+          })
+        } else results = results.filter(wine => wine.description.toLowerCase().includes(wineDescription.toLowerCase()))
       }
 
       if (!searchByName && wineType.length > 0) {

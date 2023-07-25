@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import axios from 'axios'
 
 import Wine from './components/wine'
 import Form from './components/form'
@@ -7,13 +6,6 @@ import Form from './components/form'
 function App() {
   const [results, setResults] = useState([])
   const containerRef = useRef(null)
-
-  useEffect(() => {
-    let storage = localStorage.getItem('results')
-    if (!storage) axios.get('https://winesearch.herokuapp.com/api/wines').then(res => {
-      localStorage.setItem('results', JSON.stringify(res.data))
-    })
-  }, [])
 
   useEffect(() => {
     const container = containerRef.current
