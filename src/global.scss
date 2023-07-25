@@ -52,11 +52,10 @@ header {
   align-items: center;
   padding: 0 1em 0;
   width: 100%;
-  height: calc(100vh - 8.4rem);
 }
 
 .wrapper-with-results {
-  margin-top: 24rem;
+  margin-top: 27.5rem;
 }
 
 .resultsGrid {
@@ -66,6 +65,7 @@ header {
   gap: .6em;
   padding: 0.75em;
   padding-top: 0;
+  margin-top: -15em;
   margin-bottom: 5em;
 }
 
@@ -90,16 +90,13 @@ header {
 
 @media (min-width: 1250px) {
   .wrapper {
-    align-items: center;
-  }
-
-  .wrapper {
     flex-direction: row;
     margin: initial;
     align-items: center;
     padding-left: 5em;
     gap: 0;
     overflow: hidden;
+    max-height: calc(100vh - 8.4rem)
   }
 
  .resultsGrid {
@@ -109,6 +106,7 @@ header {
     margin-bottom: 0;
     padding-bottom: 10rem;
     overflow-y: scroll;
+    max-height: calc(100vh - 8.4rem)
   }
 
   .form-container {
@@ -160,7 +158,6 @@ svg {
 .flex-col {
   display: flex;
   flex-direction: column;
-  gap: 1em;
 }
 
 .search-buttons-wrapper {

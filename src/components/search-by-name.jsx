@@ -10,7 +10,7 @@ const SearchByName = ({ text, onChange, viewSearch }) => {
 
   return (
     <div className="flex-col">
-      <div className="form-group">
+      <div className="formGroup">
         <input
           type="text"
           placeholder="e.g. Unruly, Prisoner, Arius"
@@ -19,20 +19,13 @@ const SearchByName = ({ text, onChange, viewSearch }) => {
       </div>
 
       <div className="nameStrict">
-        <p>Or,
-          <span
-            id="toggleName"
-            style={{ cursor: 'pointer', marginLeft: '5px' }}
-            onClick={() => {
-              viewSearch(false)
-            }}>
-            go back
-          </span>
+        <p>
+          OR
         </p>
+        <button id="toggleName" className='button' onClick={() => viewSearch(false)}>
+          go back
+        </button>
       </div>
-
-      <button className="button" type="button"
-        onClick={() => { }}>Search</button>
     </div>
   )
 }

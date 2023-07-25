@@ -19,13 +19,13 @@ const SearchByDescription = ({ text, onChange, viewSearch }) => {
       </div>
 
       <div className="nameStrict">
-        <p>Or, <span id="toggleName" onClick={() => viewSearch(true)}>
-            search by name
-          </span>
+        <p>
+          OR 
         </p>
+        <button id="toggleName" className="button" onClick={() => viewSearch(true)}>
+          search by name
+        </button>
       </div>
-
-      <button className='button' type="button" onClick={() => { }}>Submit</button>
     </div>
   )
 }

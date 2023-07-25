@@ -17,7 +17,7 @@ function App() {
       const form = document.querySelector('.form-container')
       form.classList.add('form-container--results')
     }
-  })
+  }, [results])
 
   return (
     <>
@@ -25,7 +25,7 @@ function App() {
         <h3>wineglass</h3>
       </header>
 
-      <div className={`wrapper ${results.length > 0 && 'wrapper-with-results'}`}>
+      <div className="wrapper">
         <Form setResults={setResults} />
 
         {results.length > 0 && (
