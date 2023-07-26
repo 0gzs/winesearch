@@ -37,6 +37,7 @@ header {
   padding: 3em 1em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 7.2rem;
 
   h3 {
@@ -50,7 +51,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1em 0;
+  padding: 0 2em 0;
   width: 100%;
 }
 
@@ -70,29 +71,12 @@ header {
   background-color: #fcb103;
 }
 
-@media (min-height: 660px) {
-  .resultsGrid {
-    margin-top: -10rem;
-  }
-}
-
-@media (min-height: 860px) {
-  .resultsGrid {
-    margin-top: -15rem;
-  }
-}
-
-@media (min-height: 980px) {
-  .resultsGrid {
-    margin-top: -20rem;
-  }
-}
-
 @media (min-width: 680px) {
   .resultsGrid {
     flex-direction: row;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-top: -10rem;
   }
 
   .product-container {
@@ -100,39 +84,40 @@ header {
   }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 750px) {
   header {
     padding: 3em 5em
   }
 }
 
-@media (min-width: 1320px) {
+@media (min-width: 980px) {
   .wrapper {
     flex-direction: row;
     margin: initial;
     align-items: center;
-    justify-content: center;
     gap: 0;
+    justify-content: space-around;
     overflow: hidden;
     max-height: calc(100vh - 8.4rem)
   }
 
- .resultsGrid {
-    width: 86rem;
+  .resultsGrid {
     height: 100%;
-    margin-bottom: 0;
+    padding: 0;
+    margin: 0;
     padding-bottom: 10rem;
+    margin-bottom: 0;
     overflow-y: scroll;
     max-height: calc(100vh - 8.4rem);
     margin-top: 5rem;
   }
 
-  .form-container {
-    margin-bottom: 0;
-  }
-
   .product-container {
     max-width: 38rem !important;
+  }
+ 
+  .form-container {
+    margin-bottom: 0;
   }
 }
 
