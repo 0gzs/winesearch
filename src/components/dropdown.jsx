@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './dropdown.scss'
 
 import regions from '../data/regions.json'
 import varietals from '../data/varietals.json'
 
-const Dropdown = ({ handler, onChange, title, icon }) => {
+const Dropdown = ({ onChange, title, icon }) => {
+  const element = useRef(null)
   const options = title.toLowerCase() === 'region' ? regions : title.toLowerCase() === 'varietal' ? varietals : [1, 2, 3, 4, 5]
 
+  const [opened, setOpened] = useState(false)
   const [selected, setSelected] = useState(null)
   const [hide, setHide] = useState(() => window.innerWidth < 500)
 
-  const toggle = () => {
-    if (handler.opened && handler.dropdownName === title) {
-      handler.setOpened(false)
-      handler.setDropdownName('')
-    } else {
-      handler.setOpened(true)
-      handler.setDropdownName(title)
-    }
-  }
+  const toggle = () => setOpened(!opened)
 
   const reset = () => {
-    handler.setOpened(false)
-    handler.setDropdownName('')
+    setOpened(false)
     setSelected(null)
     onChange(title, '')
   }
 
   const handleChange = option => {
-    onChange(title, option)
     toggle()
-    handler.setDropdownName(title)
+    onChange(title, option)
     setSelected(option)
   }
 
@@ -48,15 +40,29 @@ const Dropdown = ({ handler, onChange, title, icon }) => {
     }
   }, [])
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (element.current && !element.current.contains(event.target)) {
+        setOpened(false)
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside)
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [element])
+
   return (
-    <div className="dropdown" onClick={toggle}>
+    <div className="dropdown" onClick={toggle} ref={element}>
       <i className={icon + " icon-left"}></i>
       {!hide && (
         <button className='button' type="button">
           {selected || title}
         </button>
       )}
-      {handler.opened && handler.dropdownName === title && !selected ? (
+      {opened && !selected ? (
         <i className="fa-solid fa-chevron-up icon-right"></i>
       ) : !selected ? (
         <i className='fa-solid fa-chevron-down icon-right'></i>
@@ -64,17 +70,17 @@ const Dropdown = ({ handler, onChange, title, icon }) => {
         <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
       )
       }
-      {handler.opened && handler.dropdownName === title && (
+      {opened && (
         <div className="items-container" onMouseLeave={() => {
-          if (handler.opened) handler.setOpened(false)
+          if (opened) setOpened(false)
         }}>
           <div>
-            {options.map((value, i) => {
+            {options.map((option, i) => {
               return (
                 <p
                   key={i}
-                  onClick={() => handleChange(value)}>
-                  {value}
+                  onClick={() => handleChange(option)}>
+                  {option}
                 </p>
               )
             })}

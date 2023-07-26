@@ -15,11 +15,9 @@ const Form = ({ setResults, setKeywords }) => {
   const [wineRegion, setWineRegion] = useState('')
   const [wineRating, setWineRating] = useState('')
 
-  const [dropdownName, setDropdownName] = useState('')
-  const [opened, setOpened] = useState(false)
-
   const changeHandler = (name, value) => {
     name = name.toLowerCase()
+    console.log(name)
     switch (name) {
       case 'varietal':
         setWineType(value)
@@ -99,16 +97,6 @@ const Form = ({ setResults, setKeywords }) => {
     }
   }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName, setResults, setKeywords])
 
-  useEffect(() => {
-    const closeDropdowns = e => {
-      if (opened) {
-        setOpened(false)
-      }
-    }
-    
-    document.querySelector('.wrapper').addEventListener('mousedown', closeDropdowns)
-  }, [opened])
-
   return (
     <div className="form-container">
       <h1>Let's find your next favorite wine!</h1>
@@ -117,7 +105,6 @@ const Form = ({ setResults, setKeywords }) => {
       <div className="search-buttons-wrapper">
         <div className={"formGroup"}>
           <Dropdown
-            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Varietal'}
             icon={"fa-solid fa-wine-bottle"} />
@@ -125,7 +112,6 @@ const Form = ({ setResults, setKeywords }) => {
 
         {!searchByName && <div className={"formGroup"}>
           <Dropdown
-            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Region'}
             icon={"fa-regular fa-map"} />
@@ -133,7 +119,6 @@ const Form = ({ setResults, setKeywords }) => {
 
         <div className={"formGroup"}>
           <Dropdown
-            handler={{ dropdownName, setDropdownName, opened, setOpened }}
             onChange={changeHandler}
             title={'Rating'}
             icon={"fa-solid fa-star-half-stroke"} />
