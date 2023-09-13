@@ -27,9 +27,8 @@ const Dropdown = ({ onChange, title, icon }) => {
   }
 
   useEffect(() => {
-    // on resize if screen size is less than 400 set hide to true
     const handleResize = () => {
-      if (window.innerWidth < 500) setHide(true)
+      if (document.getElementById('dropdown-menu').parentElement.parentElement.offsetWidth < 450) setHide(true)
       else setHide(false)
     }
 
@@ -55,7 +54,7 @@ const Dropdown = ({ onChange, title, icon }) => {
   }, [element])
 
   return (
-    <div className="dropdown" onClick={toggle} ref={element}>
+    <div id="dropdown-menu" className="dropdown" onClick={toggle} ref={element}>
       <i className={icon + " icon-left"}></i>
       {!hide && (
         <button className='button' type="button">

@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 65vh;
   width: 100%;
-  height: calc(90vh - 8.4rem);
+  min-width: 32rem;
   max-width: 45rem !important;
-  margin-left: 1.5rem;
 }
 
 .nameStrict {
@@ -72,5 +72,3 @@ input[type="text"]:focus {
 .on {
   justify-items: flex-end;
 }
-
-

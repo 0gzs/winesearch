@@ -6,7 +6,6 @@ import Form from './components/form'
 function App() {
   const [results, setResults] = useState([])
   const [keywords, setKeywords] = useState([])
-  const width = window.innerWidth
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -16,19 +15,20 @@ function App() {
 
   return (
     <>
-      <header>
-        <h3>wineglass</h3>
-        <p style={{ color: '#fff' }}>Width: {width}</p>
-      </header>
-
       <div className="wrapper">
-        <Form setResults={setResults} setKeywords={setKeywords} />
+        <header>
+          <h3>wineglass</h3>
+        </header>
 
-        {results.length > 0 && (
+        <main className={`wrapper ${results.length > 0 ? 'top-margin' : ''}`}>
+          <Form setResults={setResults} setKeywords={setKeywords} />
+
+          {results.length > 0 && (
             <div ref={containerRef} className="resultsGrid">
               {results.map((w, i) => w && <Wine key={i} wine={w} keywords={keywords} />)}
             </div>
-        )}
+          )}
+        </main>
       </div>
     </>
   )
