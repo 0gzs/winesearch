@@ -18,11 +18,11 @@ const SearchByDescription = ({ text, onChange, viewSearch }) => {
           onChange={e => onChange(e.target.value)} />
       </div>
 
-      <div className="nameStrict">
+      <div className="search-type-wrapper">
         <p>
           OR 
         </p>
-        <button id="toggleName" className="button" onClick={() => viewSearch(true)}>
+        <button className="button" onClick={() => viewSearch(true)}>
           search by name
         </button>
       </div>

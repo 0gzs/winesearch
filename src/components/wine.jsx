@@ -13,11 +13,11 @@ const Wine = ({ wine, keywords }) => {
       </div>
       <h3>
         <Highlighter
-            highlightClassName='highlight'
-            searchWords={keywords}
-            autoEscape={true}
-            textToHighlight={wine.name}
-          />
+          highlightClassName='highlight'
+          searchWords={keywords}
+          autoEscape={true}
+          textToHighlight={wine.name}
+        />
       </h3>
       <div className='product-details'>
         <p className='product-description'>
@@ -28,7 +28,6 @@ const Wine = ({ wine, keywords }) => {
             textToHighlight={wine.description}
           />
         </p>
-        
       </div>
       {barcode ? (
         <div className="barcode">

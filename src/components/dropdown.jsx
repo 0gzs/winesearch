@@ -28,7 +28,7 @@ const Dropdown = ({ onChange, title, icon }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (document.getElementById('dropdown-menu').parentElement.parentElement.offsetWidth < 450) setHide(true)
+      if (document.getElementsByClassName('dropdown')[0].parentElement.parentElement.offsetWidth < 450) setHide(true)
       else setHide(false)
     }
 
@@ -54,7 +54,7 @@ const Dropdown = ({ onChange, title, icon }) => {
   }, [element])
 
   return (
-    <div id="dropdown-menu" className="dropdown" onClick={toggle} ref={element}>
+    <div className="dropdown" onClick={toggle} ref={element}>
       <i className={icon + " icon-left"}></i>
       {!hide && (
         <button className='button' type="button">

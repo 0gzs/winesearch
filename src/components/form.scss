@@ -2,27 +2,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 65vh;
   width: 100%;
+  min-height: 45rem;
   min-width: 32rem;
   max-width: 45rem !important;
 }
 
-.nameStrict {
+.search-type-wrapper {
   display: flex;
   color: white;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-}
-
-.nameStrict span {
-  text-decoration: underline;
-}
-
-.nameStrict span:hover {
-  cursor: pointer;
 }
 
 .formGroup {
@@ -35,9 +27,10 @@
 }
 
 input[type="text"] {
-    padding: 1em;
+    padding: 1.25rem;
     width: 100%;
     border: none;
+    border-radius: 3px;
     font-size: 1.6rem;
 }
 
@@ -45,30 +38,22 @@ input[type="text"]:focus {
   outline: none;
 }
 
-.toggled {
-  justify-content: flex-end;
+.search-type-wrapper span {
+  text-decoration: underline;
 }
 
-.toggle,
-.toggled {
-  width: 5rem;
+.search-type-wrapper span:hover {
+  cursor: pointer;
+}
+
+.search-type-wrapper button {
+  background-color: #fcb103;
+}
+
+.search-buttons-wrapper {
   display: flex;
-  padding: 0.25em;
-  border-radius: 5px;
-  margin-right: 1em;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.toggle > button {
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 45%;
-}
-
-.toggled > button { 
-  background-color: rgba(255, 255, 255, 1);
-  width: 45%;
-}
-
-.on {
-  justify-items: flex-end;
+  gap: 1em;
+  height: fit-content;
+  margin: 0 auto;
+  width: 100%;
 }

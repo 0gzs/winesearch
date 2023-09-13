@@ -16,9 +16,7 @@ const Form = ({ setResults, setKeywords }) => {
   const [wineRating, setWineRating] = useState('')
 
   const changeHandler = (name, value) => {
-    name = name.toLowerCase()
-    console.log(name)
-    switch (name) {
+    switch (name.toLowerCase()) {
       case 'varietal':
         setWineType(value)
         break
