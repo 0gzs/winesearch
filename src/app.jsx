@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import Wine from './components/wine'
 import Form from './components/form'
+import Header from './components/header'
 
 function App() {
   const [results, setResults] = useState([])
@@ -16,9 +17,7 @@ function App() {
   return (
     <>
       <div className="wrapper">
-        <header>
-          <h3>wineglass</h3>
-        </header>
+        <Header />
 
         <main className={`wrapper ${results.length > 0 ? 'top-margin' : ''}`}>
           <Form setResults={setResults} setKeywords={setKeywords} />

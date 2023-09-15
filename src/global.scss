@@ -24,15 +24,18 @@ h1 {
   color: #A1BDC4;
 }
 
-header {
+.header {
   width: 100%;
   margin: 0 auto;
-  background-color: transparent;
-  padding: 5rem 0;
+  background: #202f33;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 7.2rem;
+  transition: all .5s ease;
+  padding: 5rem 0;
+  position: sticky;
+  top: 0;
 
   h3 {
     font-size: 2rem;
@@ -47,7 +50,6 @@ header {
   align-items: center;
   padding: 0 6vw 0;
   width: 100vw;
-  height: 100vh;
 }
 
 main {
@@ -123,4 +125,8 @@ svg {
   .resultsGrid {
     overflow-y: scroll;
   }
+}
+
+.shrink {
+  padding: 2.5rem 0;
 }
