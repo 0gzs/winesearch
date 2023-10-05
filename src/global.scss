@@ -58,9 +58,19 @@ main {
   gap: 5rem;
 }
 
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  align-items: flex-end;
+  min-height: 50vh;
+}
+
 .resultsGrid {
   display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
   justify-content: center;
   gap: 3rem;
   width: 100%;
@@ -110,20 +120,26 @@ svg {
   flex-direction: column;
 }
 
-@media (min-width: 1024px) {
-  .resultsGrid {
-    max-width: 95rem;
+@media (min-width:1280px) {
+  .wrapper {
+    height: 100vh;
   }
-}
 
-@media (min-width: 1440px) {
   main {
     flex-direction: row !important;
     overflow: hidden;
+    gap: 0;
   }
 
   .resultsGrid {
     overflow-y: scroll;
+    flex: 1;
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  section {
+    align-items: center;
   }
 }
 

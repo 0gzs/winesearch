@@ -20,7 +20,9 @@ function App() {
         <Header />
 
         <main className={`wrapper ${results.length > 0 ? 'top-margin' : ''}`}>
-          <Form setResults={setResults} setKeywords={setKeywords} />
+          <section className="form-section">
+            <Form setResults={setResults} setKeywords={setKeywords} />
+          </section>
 
           {results.length > 0 && (
             <div ref={containerRef} className="resultsGrid">
