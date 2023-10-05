@@ -10,7 +10,6 @@ const Dropdown = ({ onChange, title, icon }) => {
 
   const [opened, setOpened] = useState(false)
   const [selected, setSelected] = useState(null)
-  const [hide, setHide] = useState(() => window.innerWidth < 500)
 
   const toggle = () => setOpened(!opened)
 
@@ -27,19 +26,6 @@ const Dropdown = ({ onChange, title, icon }) => {
   }
 
   useEffect(() => {
-    const handleResize = () => {
-      if (document.getElementsByClassName('dropdown')[0].parentElement.parentElement.offsetWidth < 450) setHide(true)
-      else setHide(false)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  useEffect(() => {
     const handleClickOutside = event => {
       if (element.current && !element.current.contains(event.target)) {
         setOpened(false)
@@ -54,13 +40,11 @@ const Dropdown = ({ onChange, title, icon }) => {
   }, [element])
 
   return (
-    <div className="dropdown" onClick={toggle} ref={element}>
+    <button className="dropdown" onClick={toggle} ref={element}>
       <i className={icon + " icon-left"}></i>
-      {!hide && (
-        <button className='button' type="button">
-          {selected || title}
-        </button>
-      )}
+
+      {selected || title}
+
       {opened && !selected ? (
         <i className="fa-solid fa-chevron-up icon-right"></i>
       ) : !selected ? (
@@ -69,6 +53,7 @@ const Dropdown = ({ onChange, title, icon }) => {
         <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
       )
       }
+
       {opened && (
         <div className="items-container" onMouseLeave={() => {
           if (opened) setOpened(false)
@@ -86,7 +71,7 @@ const Dropdown = ({ onChange, title, icon }) => {
           </div>
         </div>
       )}
-    </div>
+    </button>
   )
 }
 
