@@ -9,7 +9,7 @@ const SearchByName = ({ text, onChange, viewSearch }) => {
   }, [onChange])
 
   return (
-    <div className="flex-col">
+    <>
       <div className="formGroup">
         <input
           type="text"
@@ -26,7 +26,7 @@ const SearchByName = ({ text, onChange, viewSearch }) => {
           search by description
         </button>
       </div>
-    </div>
+    </>
   )
 }
 

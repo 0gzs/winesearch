@@ -4,17 +4,17 @@ const SearchByDescription = ({ text, onChange, viewSearch }) => {
 
   useEffect(() => {
     return () => {
-      onChange('')
+      onChange(false)
     }
   }, [onChange])
 
   return (
-    <div className="flex-col">
+    <>
       <div className="formGroup">
         <input
           type="text"
           placeholder='e.g. butter, tannin, cherry, fig'
-          value={text}
+          value={text || ''}
           onChange={e => onChange(e.target.value)} />
       </div>
 
@@ -26,7 +26,7 @@ const SearchByDescription = ({ text, onChange, viewSearch }) => {
           search by name
         </button>
       </div>
-    </div>
+    </>
   )
 }
 

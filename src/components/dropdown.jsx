@@ -1,28 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './dropdown.scss'
 
-import regions from '../data/regions.json'
-import varietals from '../data/varietals.json'
-
-const Dropdown = ({ onChange, title, icon }) => {
+const Dropdown = ({ selectState, title, options, icon }) => {
   const element = useRef(null)
-  const options = title.toLowerCase() === 'region' ? regions : title.toLowerCase() === 'varietal' ? varietals : [1, 2, 3, 4, 5]
-
+  const { selection, setSelection } = selectState
   const [opened, setOpened] = useState(false)
-  const [selected, setSelected] = useState(null)
 
-  const toggle = () => setOpened(!opened)
+  const toggle = () => opened ? setOpened(false) : setOpened(true)
 
   const reset = () => {
+    setSelection(false)
     setOpened(false)
-    setSelected(null)
-    onChange(title, '')
   }
 
   const handleChange = option => {
     toggle()
-    onChange(title, option)
-    setSelected(option)
+    setSelection(option)
   }
 
   useEffect(() => {
@@ -31,9 +24,8 @@ const Dropdown = ({ onChange, title, icon }) => {
         setOpened(false)
       }
     }
-    
+
     document.addEventListener('mousedown', handleClickOutside)
-    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
@@ -42,35 +34,32 @@ const Dropdown = ({ onChange, title, icon }) => {
   return (
     <button className="dropdown" onClick={toggle} ref={element}>
       <i className={icon + " icon-left"}></i>
-
-      {selected || title}
-
-      {opened && !selected ? (
-        <i className="fa-solid fa-chevron-up icon-right"></i>
-      ) : !selected ? (
-        <i className='fa-solid fa-chevron-down icon-right'></i>
-      ) : (
-        <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
-      )
+      {selection || title}
+      {
+        opened && !selection ? <i className="fa-solid fa-chevron-up icon-right"></i>
+          : !selection ? <i className='fa-solid fa-chevron-down icon-right'></i>
+            : <i className='fa-solid fa-xmark icon-right exit' onClick={reset}></i>
       }
 
-      {opened && (
-        <div className="items-container" onMouseLeave={() => {
-          if (opened) setOpened(false)
-        }}>
-          <div>
-            {options.map((option, i) => {
-              return (
-                <p
-                  key={i}
-                  onClick={() => handleChange(option)}>
-                  {option}
-                </p>
-              )
-            })}
+      {
+        opened && (
+          <div className="items-container" onMouseLeave={() => {
+            if (opened) setOpened(false)
+          }}>
+            <div>
+              {options.map((option, i) => {
+                return (
+                  <p
+                    key={i}
+                    onClick={() => handleChange(option)}>
+                    {option}
+                  </p>
+                )
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
     </button>
   )
 }
