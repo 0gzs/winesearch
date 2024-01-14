@@ -4,8 +4,6 @@ import useWineSearch from '../hooks/useWineSearch'
 import regions from '../data/regions.json'
 import varietals from '../data/varietals.json'
 
-import Search from './search'
-
 import './form.scss'
 import Dropdown from './dropdown'
 
@@ -53,11 +51,20 @@ const Form = ({ setResults, setKeywords }) => {
           icon={"fa-solid fa-star-half-stroke"} />
       </div>
 
-      <Search
-        text={searchQuery}
-        searchByState={{ searchByName, setSearchByName, searchQuery, setSearchQuery }}
-        placeholder={searchByName ? 'e.g. Unruly' : 'e.g. butter, tannin, cherry, fig'}
-      />
+      <div className="formGroup">
+        <input
+          type="text"
+          placeholder={searchByName ? 'e.g. Unruly' : 'e.g. butter, tannin, cherry, fig'}
+          value={searchQuery || ''}
+          onChange={e => setSearchQuery(e.target.value)} />
+      </div>
+
+      <span className='search-by-wrapper'>
+        <div className={`search-by-toggle ${searchByName ? 'on' : 'off'}`}>
+          <div className="search-by-toggle__circle" onClick={() => setSearchByName(!searchByName)}></div>
+        </div>
+        <p>or, search by {!searchByName ? <span>name.</span> : <span>description.</span>}</p>
+      </span>
 
     </div>
   )
