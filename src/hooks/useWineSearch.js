@@ -2,36 +2,35 @@ import { useState, useEffect } from 'react'
 import { debounce } from 'lodash'
 import wine from '../data/wine.json'
 
-const useWineSearch = (searchByName, wineName, wineDescription, wineType, wineRegion, wineRating) => {
+const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRating) => {
   const [results, setResults] = useState([])
   const [keywords, setKeywords] = useState([])
+  const debounceSearch = debounce(search => search(), 500)
+
+  const toLowerCaseIncludes = (baseString, queryString) => {
+    return baseString.toLowerCase().includes(queryString.toLowerCase())
+  }
 
   useEffect(() => {
-    const debounceSearch = debounce(() => search(), 500)
-
-    const toLowerCaseIncludes = (baseString, queryString) => {
-      return baseString.toLowerCase().includes(queryString.toLowerCase())
-    }
-
     const filterWines = (wines, filterCriteria) => {
-     return wines.filter(filterCriteria)
+      return wines.filter(filterCriteria)
     }
 
     const search = () => {
       let results = wine
 
       if (searchByName) {
-        results = filterWines(results, wine => toLowerCaseIncludes(wine.name, wineName))
+        results = filterWines(results, wine => toLowerCaseIncludes(wine.name, searchQuery))
       } else {
-        let trimmedStr = wineDescription.trim()
+        let trimmedStr = searchQuery.trim()
 
-        if (wineDescription && wineDescription.split(',').length > 1) {
+        if (searchQuery && searchQuery.split(',').length > 1) {
           let keywords = trimmedStr.split(',').map(word => word)
           keywords = keywords.filter(word => word !== ' ' && word !== '').map(word => word.trim())
           setKeywords(keywords)
 
           results = filterWines(results, wine => keywords.some(keyword => toLowerCaseIncludes(wine.description, keyword)))
-        } else if (wineDescription && wineDescription !== '') {
+        } else if (searchQuery && searchQuery !== '') {
           setKeywords([trimmedStr])
           results = filterWines(results, wine => toLowerCaseIncludes(wine.description, trimmedStr))
         }
@@ -53,16 +52,14 @@ const useWineSearch = (searchByName, wineName, wineDescription, wineType, wineRe
     }
 
     if (
-      wineName.length > 0 ||
-      wineDescription.length > 0 ||
+      searchQuery.length > 0 ||
       wineType.length > 0 ||
       wineRegion.length > 0 ||
       wineRating.length > 0
-    ) debounceSearch()
+    ) debounceSearch(search)
 
     if (
-      !wineName &&
-      !wineDescription &&
+      !searchQuery &&
       !wineType &&
       !wineRegion &&
       !wineRating
@@ -71,7 +68,7 @@ const useWineSearch = (searchByName, wineName, wineDescription, wineType, wineRe
       setKeywords([])
     }
 
-  }, [wineName, wineDescription, wineType, wineRegion, wineRating, searchByName])
+  }, [searchQuery, wineType, wineRegion, wineRating, searchByName])
 
   return { results, keywords }
 }

@@ -4,21 +4,19 @@ import useWineSearch from '../hooks/useWineSearch'
 import regions from '../data/regions.json'
 import varietals from '../data/varietals.json'
 
-import SeachByName from './search-by-name'
-import SearchByDescription from './search-by-desc'
+import Search from './search'
 
 import './form.scss'
 import Dropdown from './dropdown'
 
 const Form = ({ setResults, setKeywords }) => {
+  const [searchQuery, setSearchQuery] = useState('')
   const [searchByName, setSearchByName] = useState(false)
-  const [wineName, setWineName] = useState('')
-  const [wineDescription, setWineDescription] = useState('')
   const [wineType, setWineType] = useState(false)
   const [wineRegion, setWineRegion] = useState(false)
   const [wineRating, setWineRating] = useState(false)
 
-  const { results, keywords } = useWineSearch(searchByName, wineName, wineDescription, wineType, wineRegion, wineRating)
+  const { results, keywords } = useWineSearch(searchByName, searchQuery, wineType, wineRegion, wineRating)
 
   useEffect(() => {
     if (results.length > 0) {
@@ -31,24 +29,22 @@ const Form = ({ setResults, setKeywords }) => {
   }, [results, keywords, setResults, setKeywords])
 
   return (
-    <div className={`form-wrapper ${results.length > 0 && "top-margin"}`}>
+    <div className='form-wrapper'>
       <h1>Let's find your next favorite wine!</h1>
       <p className='sub-heading'>Provide a few details to assist in the search.</p>
 
-      <div className={`search-buttons-wrapper ${searchByName && 'align-left'}`}>
+      <div className='search-buttons-wrapper'>
         <Dropdown
           selectState={{ selection: wineType, setSelection: setWineType }}
           title={'Varietal'}
           options={varietals}
           icon={"fa-solid fa-wine-bottle"} />
 
-        {!searchByName && (
-          <Dropdown
-            selectState={{ selection: wineRegion, setSelection: setWineRegion }}
-            title={'Region'}
-            options={regions}
-            icon={"fa-regular fa-map"} />
-        )}
+        <Dropdown
+          selectState={{ selection: wineRegion, setSelection: setWineRegion }}
+          title={'Region'}
+          options={regions}
+          icon={"fa-regular fa-map"} />
 
         <Dropdown
           selectState={{ selection: wineRating, setSelection: setWineRating }}
@@ -57,19 +53,11 @@ const Form = ({ setResults, setKeywords }) => {
           icon={"fa-solid fa-star-half-stroke"} />
       </div>
 
-      {searchByName ? (
-        <SeachByName
-          text={wineName}
-          onChange={setWineName}
-          viewSearch={setSearchByName}
-        />
-      ) : (
-        <SearchByDescription
-          text={wineDescription}
-          onChange={setWineDescription}
-          viewSearch={setSearchByName}
-        />
-      )}
+      <Search
+        text={searchQuery}
+        searchByState={{ searchByName, setSearchByName, searchQuery, setSearchQuery }}
+        placeholder={searchByName ? 'e.g. Unruly' : 'e.g. butter, tannin, cherry, fig'}
+      />
 
     </div>
   )

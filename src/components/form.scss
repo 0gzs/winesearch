@@ -1,10 +1,12 @@
 .form-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   min-width: 30rem;
   max-width: 48rem;
   width: fit-content;
+  height: 63rem;
   flex: 1;
   padding: 4rem 0;
 }
@@ -38,19 +40,7 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
 }
-
-.search-type-wrapper span {
-  text-decoration: underline;
-}
-
-.search-type-wrapper span:hover {
-  cursor: pointer;
-}
-
-.search-type-wrapper button {
-  background-color: #fcb103;
-}
-
+ 
 .search-buttons-wrapper {
   display: flex;
   justify-content: space-between;
