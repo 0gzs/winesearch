@@ -9,20 +9,12 @@ const useWineSearch = (searchByName, wineName, wineDescription, wineType, wineRe
   useEffect(() => {
     const debounceSearch = debounce(() => search(), 500)
 
-    const toLowerCaseIncludes = (value, search) =>
-      value.toLowerCase().includes(search.toLowerCase())
-
-    const filterWines = (wines, filterCriteria) => {
-      return wines.filter(filterCriteria)
+    const toLowerCaseIncludes = (baseString, queryString) => {
+      return baseString.toLowerCase().includes(queryString.toLowerCase())
     }
 
-    const filterWinesByDescription = (wines, filterCriteria) => {
-      let keywords = wineDescription.split(',').map(word => word.trim())
-      keywords = keywords.filter(word => word !== ' ' && word !== '').map(word => word.trim())
-
-      setKeywords([...keywords])
-
-      return wines.filter(wine => keywords.some(keyword => toLowerCaseIncludes(wine.description, keyword)))
+    const filterWines = (wines, filterCriteria) => {
+     return wines.filter(filterCriteria)
     }
 
     const search = () => {
@@ -31,16 +23,17 @@ const useWineSearch = (searchByName, wineName, wineDescription, wineType, wineRe
       if (searchByName) {
         results = filterWines(results, wine => toLowerCaseIncludes(wine.name, wineName))
       } else {
+        let trimmedStr = wineDescription.trim()
 
-        if (wineDescription && wineDescription.length > 0) {
-          let keywords = wineDescription.split(',').map(word => word.trim())
+        if (wineDescription && wineDescription.split(',').length > 1) {
+          let keywords = trimmedStr.split(',').map(word => word)
           keywords = keywords.filter(word => word !== ' ' && word !== '').map(word => word.trim())
-          setKeywords([keywords])
-          results = filterWinesByDescription(results, wine => toLowerCaseIncludes(wine.description, keywords, true))
-        } else if (wineDescription) {
-          let keyword = [wineDescription.trim()]
-          setKeywords([...keyword])
-          results = filterWinesByDescription(results, wine => toLowerCaseIncludes(wine.description, keyword))
+          setKeywords(keywords)
+
+          results = filterWines(results, wine => keywords.some(keyword => toLowerCaseIncludes(wine.description, keyword)))
+        } else if (wineDescription && wineDescription !== '') {
+          setKeywords([trimmedStr])
+          results = filterWines(results, wine => toLowerCaseIncludes(wine.description, trimmedStr))
         }
       }
 
