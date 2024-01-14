@@ -68,7 +68,7 @@ const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRati
       setKeywords([])
     }
 
-  }, [searchQuery, wineType, wineRegion, wineRating, searchByName])
+  }, [searchQuery, wineType, wineRegion, wineRating, searchByName, debounceSearch])
 
   return { results, keywords }
 }
