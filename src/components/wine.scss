@@ -6,6 +6,7 @@
   margin: 0 auto;
   position: relative;
   margin-bottom: 3rem;
+  max-width: 44rem;
 
   ul {
     display: flex;
@@ -13,14 +14,18 @@
   }
 }
 
-.card button {
+.button {
   width: fit-content;
   font-size: 1.2rem;
-  background-color: #202f3399;
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  border: none;
 
   &:hover, &:active {
+    cursor: pointer;
     background-color: #202f33;
   }
 

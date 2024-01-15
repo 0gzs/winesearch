@@ -24,6 +24,21 @@ h1 {
   color: #A1BDC4;
 }
 
+svg {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  display:inline-block;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/*
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -57,7 +72,8 @@ main {
   overflow-y: auto;
   padding: 0 3vw 0;
 }
-
+*/
+/*
 .form-container {
   width: 100%;
   height: 100%;
@@ -96,23 +112,12 @@ main {
   }
 }
 
-svg {
-  width: 100px;
-  height: 100px;
-  margin: 20px auto;
-  display:inline-block;
-}
-
-.sub-heading {
-  font-size: 1.6rem; 
-  color: #fff;
-  margin: 0.5em 0;
-}
-
 .top-margin {
   margin-top: 15%;
 }
+*/
 
+/*
 @media(min-height: 340px) {
   .wrapper {
     min-height: 49rem;
@@ -148,7 +153,4 @@ svg {
     padding-bottom: 2.5rem;
   }
 }
-
-.shrink {
-  padding: 2.5rem 0;
-}
+*/

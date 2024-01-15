@@ -4,11 +4,8 @@
   justify-content: center;
   width: 100%;
   min-width: 30rem;
-  max-width: 48rem;
+  padding: 2rem;
   width: fit-content;
-  height: 63rem;
-  flex: 1;
-  padding: 4rem 0;
 }
 
 .search-type-wrapper {
@@ -103,6 +100,12 @@ input[type="text"]:focus {
   .search-by-toggle__circle {
     float: left;
   }
+}
+
+.sub-heading {
+  font-size: 1.6rem; 
+  color: #fff;
+  margin: 0.5em 0;
 }
 
 @media (max-width: 480px) {

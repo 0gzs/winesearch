@@ -14,17 +14,7 @@ const Form = ({ setResults, setKeywords }) => {
   const [wineRegion, setWineRegion] = useState(false)
   const [wineRating, setWineRating] = useState(false)
 
-  const { results, keywords } = useWineSearch(searchByName, searchQuery, wineType, wineRegion, wineRating)
-
-  useEffect(() => {
-    if (results.length > 0) {
-      setResults(results)
-    } else setResults([])
-
-    if (keywords.length > 0) {
-      setKeywords([...keywords])
-    } else setKeywords([])
-  }, [results, keywords, setResults, setKeywords])
+  useWineSearch(searchByName, searchQuery, wineType, wineRegion, wineRating, setResults, setKeywords)
 
   return (
     <div className='form-wrapper'>

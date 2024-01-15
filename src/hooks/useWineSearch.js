@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react'
-import { debounce } from 'lodash'
+import { useEffect } from 'react'
 import wine from '../data/wine.json'
 
-const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRating) => {
-  const [results, setResults] = useState([])
-  const [keywords, setKeywords] = useState([])
-  const debounceSearch = debounce(search => search(), 500)
-
+const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRating, setResults, setKeywords) => {
   const toLowerCaseIncludes = (baseString, queryString) => {
     return baseString.toLowerCase().includes(queryString.toLowerCase())
   }
 
-  useEffect(() => {
-    const filterWines = (wines, filterCriteria) => {
-      return wines.filter(filterCriteria)
-    }
+  const filterWines = (wines, filterCriteria) => {
+    return wines.filter(filterCriteria)
+  }
 
-    const search = () => {
+  useEffect(() => {
+
+
+    function search() {
       let results = wine
 
       if (searchByName) {
@@ -56,7 +53,7 @@ const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRati
       wineType.length > 0 ||
       wineRegion.length > 0 ||
       wineRating.length > 0
-    ) debounceSearch(search)
+    ) search()
 
     if (
       !searchQuery &&
@@ -68,9 +65,7 @@ const useWineSearch = (searchByName, searchQuery, wineType, wineRegion, wineRati
       setKeywords([])
     }
 
-  }, [searchQuery, wineType, wineRegion, wineRating, searchByName, debounceSearch])
-
-  return { results, keywords }
+  }, [searchQuery, wineType, wineRegion, wineRating, searchByName, setKeywords, setResults])
 }
 
 export default useWineSearch

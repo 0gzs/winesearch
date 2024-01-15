@@ -1,0 +1,45 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.form-container {
+  width: 100%;
+  height: 100%;
+  max-width: 46rem;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem 2rem;
+}
+
+@media (min-width: 1000px) {
+  main {
+    align-items: flex-start;
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .form-container {
+    justify-content: center;
+  }
+
+  .resultsGrid {
+    flex-grow: 1;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+}

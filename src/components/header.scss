@@ -1,0 +1,29 @@
+header {
+  width: 100%;
+  padding: 4rem 4vw;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  background-color: #202f33;
+  color: #fff;
+  transition: all .3s ease-in;
+
+  h3 {
+    font-size: 2rem;
+    height: fit-content;
+    color: #fff;
+  }
+}
+
+.shrink {
+  padding: 2rem 4vw;
+}
+
+@media (min-width: 1000px) {
+  header {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}

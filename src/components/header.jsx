@@ -1,15 +1,22 @@
 import useScrollEffect from '../hooks/useScrollEffect.js'
+import { useEffect, useState } from 'react'
+
+import './header.scss'
 
 const Header = () => {
-  const { scrolled } = useScrollEffect(100, 50) 
+  const [shrink, setShrink] = useState(false)
+  const { scrolled } = useScrollEffect(100, 50)
 
-  let headerClass = ''
-  if (scrolled) headerClass = 'shrink'
+  useEffect(() => {
+    if (scrolled) {
+      setShrink(true)
+    } else setShrink(false)
+  }, [scrolled])
 
   return (
-    <div id='header' className={`header ${headerClass}`}>
+    <header className={shrink ? 'shrink' : ''}>
       <h3>wineglass</h3>
-    </div>
+    </header>
   )
 }
 
