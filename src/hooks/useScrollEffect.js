@@ -1,31 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
-const useScrollEffect = (offset, offsetOff) => {
- const [scrolled, setScrolled] = useState(false)  
-  
+const useScrollEffect = (containerRef, results, effectState) => {
+  const { effect, setEffect } = effectState 
+
   useEffect(() => {
-    let rafId = null
-
+    const container = containerRef.current
     const onScroll = () => {
-      if (rafId) cancelAnimationFrame(rafId)
-
-        rafId = requestAnimationFrame(() => {
-          const currentOffset = window.pageYOffset
-          
-          if (Math.floor(currentOffset) >= offset && !scrolled) setScrolled(true)
-          else if (Math.floor(currentOffset) < offsetOff && scrolled) setScrolled(false)
-        })
+      if (container.scrollTop > 0 && !effect) setEffect(true)
+      if (container.scrollTop === 0 && effect) setEffect(false)
     }
 
-    window.addEventListener('scroll', onScroll)
-
-    return () => {
-      cancelAnimationFrame(rafId)
-      window.removeEventListener('scroll', onScroll);
+    if (container) {
+      container.addEventListener("scroll", onScroll)
     }
-  }, [scrolled, offset, offsetOff]) 
-
-  return { scrolled }
+  }, [containerRef, results, effect, setEffect])
 }
 
 export default useScrollEffect
