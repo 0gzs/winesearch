@@ -1,19 +1,19 @@
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow-y: auto;
+  padding: 0 3vw 0;
   flex-grow: 1;
+  align-items: center;
 }
 
 .form-container {
   width: 100%;
-  height: 100%;
   max-width: 46rem;
-  min-height: 100%;
   display: flex;
   justify-content: center;
+  min-height: 100%;
+  margin-top: -2rem;
 }
 
 .resultsGrid {
@@ -28,13 +28,15 @@ main {
 
 @media (min-width: 1000px) {
   main {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     overflow: hidden;
+    justify-content: center;
   }
 
   .form-container {
     justify-content: center;
+    padding: 0 4rem;
   }
 
   .resultsGrid {

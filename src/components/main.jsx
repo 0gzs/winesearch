@@ -22,8 +22,8 @@ const Main = () => {
         <Form setResults={setResults} setKeywords={setKeywords} />
       </div>
 
-      {results.length > 0 && (
-        <div ref={containerRef} className="resultsGrid">
+      {Array.isArray(results) && results.length > 0 && (
+        <div ref={containerRef} className={`resultsGrid ${results.length > 0 ? 'top-margin': ''}`}>
           {results.map((w, i) => w && <Wine key={i} wine={w} keywords={keywords} />)}
         </div>
       )}

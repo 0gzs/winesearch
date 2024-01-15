@@ -33,9 +33,9 @@ svg {
 
 .container {
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 /*
@@ -72,8 +72,7 @@ main {
   overflow-y: auto;
   padding: 0 3vw 0;
 }
-*/
-/*
+
 .form-container {
   width: 100%;
   height: 100%;
@@ -110,6 +109,12 @@ main {
     cursor: pointer;
     i { color: #58181f; }
   }
+}
+
+.sub-heading {
+  font-size: 1.6rem; 
+  color: #fff;
+  margin: 0.5em 0;
 }
 
 .top-margin {
@@ -152,5 +157,9 @@ main {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
+}
+
+.shrink {
+  padding: 2.5rem 0;
 }
 */
