@@ -8,26 +8,26 @@ const Wine = ({ wine, keywords }) => {
 
   return (
     <div className='card'>
-        <div className='product-img'>
-          <img src={wine.image} alt={wine.name} />
-        </div>
-          <h3>
-            <Highlighter
-              highlightClassName='highlight'
-              searchWords={keywords}
-              autoEscape={true}
-              textToHighlight={wine.name}
-            />
-          </h3>
+      <div className='product-img'>
+        <img src={wine.image} alt={wine.name} />
+      </div>
+      <h3>
+        <Highlighter
+          highlightClassName='highlight'
+          searchWords={keywords}
+          autoEscape={true}
+          textToHighlight={wine.name}
+        />
+      </h3>
 
-          <p className='product-description'>
-            <Highlighter
-              highlightClassName='highlight'
-              searchWords={keywords}
-              autoEscape={true}
-              textToHighlight={wine.description}
-            />
-          </p>
+      <p className='product-description'>
+        <Highlighter
+          highlightClassName='highlight'
+          searchWords={keywords}
+          autoEscape={true}
+          textToHighlight={wine.description}
+        />
+      </p>
       <div className='product-details'>
         <ul>
           <span>
@@ -51,9 +51,17 @@ const Wine = ({ wine, keywords }) => {
         </ul>
       </div>
       {barcode ? (
-        <div className="barcode">
-          <img src={`https://barcode.tec-it.com/barcode.ashx?data=${wine.sku}&code=Code128`} alt="barcode" />
-        </div>
+        <>
+          <div className="barcode">
+            <img src={`https://barcode.tec-it.com/barcode.ashx?data=${wine.sku}&code=Code128`} alt="barcode" />
+          </div>
+          <button
+            type="button"
+            className='button disabled'
+            disabled>
+            View Barcode
+          </button>
+        </>
       ) : (
         <button
           type="button"

@@ -36,6 +36,15 @@
   }
 }
 
+.disabled {
+  background-color: #ccc;
+
+  &:hover, &:active {
+    cursor: default;
+    background-color: #ccc;
+  }
+}
+
 .highlight {
   background-color: #fcb103;
 }
