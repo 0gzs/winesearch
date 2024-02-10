@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/winesearch/static/css/main.1bc4e59e.css",
-    "main.js": "/winesearch/static/js/main.126755e1.js",
+    "main.css": "/winesearch/static/css/main.62f9e619.css",
+    "main.js": "/winesearch/static/js/main.60163545.js",
     "index.html": "/winesearch/index.html",
-    "main.1bc4e59e.css.map": "/winesearch/static/css/main.1bc4e59e.css.map",
-    "main.126755e1.js.map": "/winesearch/static/js/main.126755e1.js.map"
+    "main.62f9e619.css.map": "/winesearch/static/css/main.62f9e619.css.map",
+    "main.60163545.js.map": "/winesearch/static/js/main.60163545.js.map"
   },
   "entrypoints": [
-    "static/css/main.1bc4e59e.css",
-    "static/js/main.126755e1.js"
+    "static/css/main.62f9e619.css",
+    "static/js/main.60163545.js"
   ]
 }
